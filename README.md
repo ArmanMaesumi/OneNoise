@@ -60,7 +60,7 @@ accelerate config
 ```
 then launch the training script, for example:
 ```bash
-accelerate launch --config_file my_accel_config.yml train.py --model_config tiny --data_dir ./data/onenoise_data --batch_size 8 --grad_accum 2 --emb_penalty 0.02 --precision fp32
+accelerate launch --config_file my_accel_config.yml train.py --model_config tiny --data_dir ./data --batch_size 8 --grad_accum 2 --emb_penalty 0.02 --precision fp32
 ```
 Note that the preferred training precision should be set in the above command. Please see `args.py` for all relevant parameters.
 
