@@ -44,5 +44,5 @@
   "cutmix": 1,
   "cutmix_prob": 0.5,
   "cutmix_rot": true,
-  "emb_penalty": 0.02,
+  "emb_penalty": 0.02
 }
