@@ -1,1 +1,0 @@
-rsync -azvp -n --include "inference/masks/*.png" --exclude "*.png" --exclude "*/__pycache__/" --exclude ".git/" --exclude "results/" --exclude "tmp/" --exclude "logs/" --exclude "figs/" --exclude "rebuttal/" --exclude "inference/*.pt" --exclude "wandb/" --exclude "ff/" /home/arman/research/OneNoise_dev/ amaesumi@sshcampus.ccv.brown.edu:/users/amaesumi/OneNoise_dev/
