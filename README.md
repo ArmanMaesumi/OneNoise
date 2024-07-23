@@ -2,7 +2,14 @@
 
 ### [[Project Page]](https://armanmaesumi.github.io/onenoise/) / [[arXiv]](https://arxiv.org/abs/2404.16292) / [[bibtex]](https://armanmaesumi.github.io/onenoise/resources/bibtex.txt)
 
-![](./imgs/paper_teaser.jpg)
+<p float="left">
+  <img src="./imgs/ring_render_crop.jpg" width="49%" />
+  <img src="./imgs/noise_render.jpg" width="49%" />
+</p>
+
+<!-- ![](./imgs/ring_render.jpg) -->
+<!-- ![](./imgs/noise_render.jpg) -->
+<!-- ![](./imgs/paper_teaser.jpg) -->
 
 Official code release for "[One Noise to Rule Them All: Learning a Unified Model of Spatially-Varying Noise Patterns](https://armanmaesumi.github.io/onenoise/)" <br>by 	
 Arman Maesumi, Dylan Hu*, Krishi Saripalli*, Vladimir G. Kim, Matthew Fisher, Sören Pirk, Daniel Ritchie.
