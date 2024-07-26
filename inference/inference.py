@@ -21,7 +21,7 @@ def preproc_mask(mask, blending_factor=1.0, H=None, W=None, invert=False):
     if isinstance(mask, torch.Tensor):
         # first mask is not a binary mask (already smooth), then we dont need to do much preprocessing
         if len(mask.unique()) != 2:
-            return mask.float().pow_(blending_factor)
+            return mask.float().pow(blending_factor)
         
     if isinstance(mask, str):
         mask = read_image(mask).float()
@@ -36,7 +36,7 @@ def preproc_mask(mask, blending_factor=1.0, H=None, W=None, invert=False):
     dst = distance_transform_edt(mask.cpu().numpy())
     if dst.max() > 0:
         dst = dst / dst.max()
-    dst = torch.from_numpy(dst).float().pow_(blending_factor).cuda()
+    dst = torch.from_numpy(dst).float().pow(blending_factor).cuda()
     return dst
 
 # convenience functions for creating noise configurations:
