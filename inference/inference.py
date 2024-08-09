@@ -17,9 +17,14 @@ from config.noise_config import noise_types, noise_aliases, param_names, ntype_t
 def preproc_mask(mask, blending_factor=1.0, H=None, W=None, invert=False):
     '''
     Preprocesses a binary mask for blending between two noise types.
+    mask:               binary mask (file path or (H,W) tensor) -- optionally can be a [0,1] tensor (smooth mask)
+    blending_factor:    how gradual the blending should be -- closer to zero makes the blending more abrupt, closer to one makes it more gradual
+                        good values are typically in [0.2, 0.4] range. This can be specified per pixel as well: (H, W) tensor.
+    H, W:               height and width of the output mask
+    invert:             whether to invert the mask
     '''
     if isinstance(mask, torch.Tensor):
-        # first mask is not a binary mask (already smooth), then we dont need to do much preprocessing
+        # if mask is not a binary mask (already smooth), then we dont need to do much preprocessing
         if len(mask.unique()) != 2:
             return mask.float().pow(blending_factor)
         
@@ -34,9 +39,10 @@ def preproc_mask(mask, blending_factor=1.0, H=None, W=None, invert=False):
         mask = torch.nn.functional.interpolate(mask.unsqueeze(0), (H, W), mode='nearest').squeeze(0)
 
     dst = distance_transform_edt(mask.cpu().numpy())
-    if dst.max() > 0:
+    if dst.max() > 0: # normalize distance transform
         dst = dst / dst.max()
-    dst = torch.from_numpy(dst).float().pow(blending_factor).cuda()
+    dst = torch.from_numpy(dst).float().cuda()
+    dst = dst.pow(blending_factor)
     return dst
 
 # convenience functions for creating noise configurations:

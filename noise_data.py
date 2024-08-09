@@ -111,6 +111,9 @@ class HDF5Dataset(Dataset):
                  max_samples=None
                 ) -> None:
         super().__init__()
+        self.H = 256
+        self.W = 256 # hardcoded for our dataset
+        
         self.noise_types = noise_types
         self.data_dir = data_dir
         self.cutmix = cutmix
